@@ -27,9 +27,9 @@ class BME280(spidev.SpiDev):
         self.max_speed_hz = 1000000
 
         # 各種設定
-        self.write_byte(0xF5, (t_sb   << 5) | (filter << 2) | spi3w_en)
-        self.write_byte(0xF4, (osrs_t << 5) | (osrs_p << 2) | mode)
         self.write_byte(0xF2, (osrs_h))
+        self.write_byte(0xF4, (osrs_t << 5) | (osrs_p << 2) | mode)
+        self.write_byte(0xF5, (t_sb   << 5) | (filter << 2) | spi3w_en)
 
         # キャリブレーション用のパラメータ
         self.__get_calib_params()
